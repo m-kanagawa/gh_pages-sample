@@ -4,13 +4,67 @@
 <meta charset="UTF-8">
 <title>GitHub Pages Sample</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/marx/2.0.4/marx.css">
+<style>
+.over img{
+	opacity:0.5;
+}
+.nav ul{
+	margin: 0;
+	padding: 0;
+}
+.nav li{
+	display:inline;
+	list-style:none;
+	padding: 10px;
+}
+.nav ul li img {
+	width: 100px;
+}
+</style>
 </head>
 
 <body>
 <main>
   <h1>GitHub Pages のサンプルです</h1>
+<div id="slide">
+<img src="https://placehold.jp/640x500.png">
+<em>title1</em>
+</div>
+<div class="nav">
+	<ul>
+		<li><a href="https://placehold.jp/640x500.png" title="title1"><img src="https://placehold.jp/640x500.png"></a></li>
+		<li><a href="https://placehold.jp/24/cc99cc/993333/640x500.png" title="title2"><img src="https://placehold.jp/24/cc99cc/993333/640x500.png"></a></li>
+		<li><a href="https://placehold.jp/24/cc9999/993333/640x500.png" title="title3"><img src="https://placehold.jp/24/cc9999/993333/640x500.png"></a></li>
+	</ul>
+	<ul>
+		<li><a href="https://placehold.jp/640x500.png" title="title4"><img src="https://placehold.jp/640x500.png"></a></li>
+		<li><a href="https://placehold.jp/24/cc99cc/993333/640x500.png" title="title5"><img src="https://placehold.jp/24/cc99cc/993333/640x500.png"></a></li>
+		<li><a href="https://placehold.jp/24/cc9999/993333/640x500.png" title="title6"><img src="https://placehold.jp/24/cc9999/993333/640x500.png"></a></li>
+	</ul>
+</div>
 </main>
-
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+$(document).ready(function(){
+						   
+	$("ul > li").hover(function(){ 
+		$(this).fadeTo(200,0.5);
+	},function() {
+		$(this).fadeTo(200,1);
+	});
+	
+	$("ul > li > a").click(function(){
+		var src = $(this).attr("href"); 
+		var title = $(this).attr("title");
+		$("#slide").fadeOut("slow",function() {
+			$(this).find("img").attr("src",src);
+			$(this).find("em").html(title);
+			$(this).fadeIn();
+		});
+		return false;
+	});
+	
+});
+</script>
 </body>
 </html>
